@@ -1,29 +1,8 @@
-# Netlify configuration for Vite + React (E-Commerce-application)
-# Build command and publish directory
 [build]
-  command = "npm run build"
   publish = "dist"
+  command = "npm run build"
 
-# Optional environment values (adjust node version if needed)
-[build.environment]
-  NODE_VERSION = "18"
-  CI = "false"
-
-# Single Page App routing: redirect all requests to index.html
 [[redirects]]
   from = "/*"
   to = "/index.html"
   status = 200
-  force = true
-
-# Basic headers: disable aggressive caching for HTML to ensure new deploys load
-[[headers]]
-  for = "/*.html"
-  [headers.values]
-    Cache-Control = "no-cache, no-store, must-revalidate"
-
-# Cache static assets (js/css/images) for better performance
-[[headers]]
-  for = "/assets/*"
-  [headers.values]
-    Cache-Control = "public, max-age=31536000, immutable"
